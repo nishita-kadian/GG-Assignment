@@ -15,21 +15,17 @@ class EventModel(BaseModel):
     time: time
     latitude: float 
     longitude: float
-    # weather: str
-    # distance: float
 
 
 class Event(Base):
     __tablename__ = "event"
-    eventId = Column(String, primary_key=True)
-    eventName = Column(String)
-    cityName = Column(String)
+    eventId = Column(String(36), primary_key=True)
+    eventName = Column(String(255))
+    cityName = Column(String(255))
     date = Column(Date)
     time = Column(Time) 
     latitude = Column(Double)
     longitude = Column(Double)
-    # weather = Column(String)
-    # distance_km = Column(Double)
 
 class EventAdapter:
     def __init__(self, eventModel):
@@ -43,8 +39,6 @@ class EventAdapter:
             date=self.eventModel.date,
             time=self.eventModel.time,
             latitude=self.eventModel.latitude,
-            longitude=self.eventModel.longitude,
-            # weather=self.eventModel.weather,
-            # distance_km=self.eventModel.distance
+            longitude=self.eventModel.longitude
         )
 

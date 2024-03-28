@@ -3,7 +3,7 @@ import requests
 import csv
 import mysql.connector
 from sqlalchemy import create_engine
-from models.event import EventModel, EventAdapter
+from models.event import EventModel, EventAdapter, Base
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
 import traceback
@@ -13,16 +13,45 @@ import math
 from datetime import date, time
 import os
 from fastapi import HTTPException
-
-
+from sqlalchemy import MetaData
 
 app = FastAPI()
 
 connection_string = "mysql+mysqlconnector://root:password@mysql-local:3306/gyangrove"
 engine = create_engine(connection_string, echo=True)
 
+Base.metadata.create_all(engine)
+
+def create_table_if_not_present(engine):
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    tables = metadata.tables.keys()
+    for table in tables:
+        if table == 'event':
+            return 
+    
+    sql = text("""CREATE TABLE event (
+                    eventId VARCHAR(36) NOT NULL, 
+                    eventName VARCHAR(255), 
+                    cityName VARCHAR(255), 
+                    date VARCHAR(255), 
+                    time VARCHAR(255), 
+                    latitude DOUBLE, 
+                    longitude DOUBLE,  
+                    PRIMARY KEY (eventId)
+                    );"""
+               )
+    
+    with engine.connect() as connection:
+        connection.execute(sql)
+    return 
+
+create_table_if_not_present(engine)
+
 weatherAPIUrl = "https://gg-backend-assignment.azurewebsites.net/api/Weather"
 weatherAPIKey = os.environ['weatherAPIKey']
+
+
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
