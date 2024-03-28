@@ -10,8 +10,8 @@ This application provides endpoints for managing events and retrieving events ba
   1. Clone the repository.
   2. Install dependencies using 'pip install -r requirements.txt'.
   3. Set up a MySQL database and update the connection_string variable in main.py with your database credentials.
- - 4. Set up an environment variable weatherAPIKey with the API key for the weather service.
- - 5. Run the FastAPI server using 'uvicorn main:app --reload'.
+  4. Set up an environment variable weatherAPIKey with the API key for the weather service.
+  5. Run the FastAPI server using 'uvicorn main:app --reload'.
 
 The project was broken down into 3 major components:
 1. Database model of events
