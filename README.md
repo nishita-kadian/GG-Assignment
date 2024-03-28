@@ -25,7 +25,7 @@ The project was broken down into 3 major components:
 
 # Endpoints
 
-1. Upload Event Data
+1. Upload Event Data\
      a. Method: POST
      b. URL: '/upload'
      c. Description: Uploads a CSV file containing event data.
