@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+    mysql-local:
+        ports:
+            - "3306:3306"
+        image: mysql:latest
+        container_name: mysql-local
+        volumes:
+            - "mysql-datavolume:/var/lib/mysql"
+        command: --default-authentication-plugin=mysql_native_password
+        env_file:
+            - ./.env.dev 
+    backend:
+        ports:
+            - "80:80"
+        image: "gyangrove/backend:latest"
+        container_name: gyangrove-backend
+        depends_on:
+            - mysql-local
+        volumes:
+            - .:/app
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "3"
+        env_file:
+            - ./.env.dev
+        build:
+            context: ./
+            dockerfile: backend.dockerfile
+        command: bash -c "cd ./src && uvicorn main:app --host 0.0.0.0 --port 80 --reload"
+volumes:
+    backend:
+        driver: local
+    mysql-datavolume:
+networks:
+    default:
+        external:
+            name: connector-network
