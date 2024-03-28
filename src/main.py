@@ -3,7 +3,7 @@ import requests
 import csv
 import mysql.connector
 from sqlalchemy import create_engine
-from models import EventModel, EventAdapter
+from Models.event import EventModel, EventAdapter
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
 import traceback
@@ -124,7 +124,7 @@ def addEvent(eventName:str, cityName: str, date: date, time: time, latitude: flo
 
     
 
-@app.post("/show_events")
+@app.get("/show_events")
 def show_events(latitude: float, longitude: float, startDate: date, page: int):
     try:
         with engine.connect() as connection:
@@ -166,7 +166,7 @@ def show_events(latitude: float, longitude: float, startDate: date, page: int):
     except Exception as e:
         return {"message": f"Error: {e}"}
 
-@app.post("/show_events_page_by_db")
+@app.get("/show_events_page_by_db")
 def show_events_page_by_db(latitude: float, longitude: float, startDate: date, page: int):
     try:
         with engine.connect() as connection:
