@@ -5,6 +5,9 @@ This application provides endpoints for managing events and retrieving events ba
   - FastAPI
   - SQLAlchemy
   - MySQL
+  - Why? 
+     - As I have already worked with Flask and Django, I wanted to learn a new framework so I choose FastAPI. Also, FastAPI has been tested to handle more concurrent requests compared to other frameworks.
+     - MySql has been a go to defacto for relational databases for a long time. Postgres is equally good.  
 
 # Design Decision
 
@@ -31,6 +34,8 @@ The project is broken down into 3 major components:
 3. Dockerizing and hosting
 
 # Endpoints
+
+> Processing or other types of error will return HTTP status code 500.
 
 1. Upload Event Data
      ```
