@@ -26,13 +26,14 @@ The project was broken down into 3 major components:
 # Endpoints
 
 1. Upload Event Data\
-    nbsp a. Method: POST\
+  * Subtopic
+     a. Method: POST\
      b. URL: '/upload'\
      c. Description: Uploads a CSV file containing event data.\
      d. Request Body: Form data with a single file upload parameter named file.\
      e. Response: JSON message indicating success or failure.\
 
-2. Add Event
+3. Add Event
      a. Method: POST
      b. URL: /add
      c. Description: Adds a single event to the database.
@@ -45,7 +46,7 @@ The project was broken down into 3 major components:
           - longitude: Float (longitude coordinate of the event location).
      e. Response: JSON message indicating success or failure.
 
-3. Show Events
+4. Show Events
      a. Method: POST
      b. URL: /show_events
      c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date, with pagination.
@@ -61,7 +62,7 @@ The project was broken down into 3 major components:
           - totalEvents: Integer (total number of events matching the criteria).
           - totalPages: Integer (total number of pages).
 
-4. Show Events (Direct Database Query)
+5. Show Events (Direct Database Query)
      a. Method: POST
      b. URL: /show_events_page_by_db
      c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date, with pagination using direct database query.
