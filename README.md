@@ -36,9 +36,9 @@ The project was broken down into 3 major components:
      a. Method: POST\
      b. URL: '/add'\
      c. Description: Adds a single event to the database.\
-     d. Request Body:
-          - eventName: String (name of the event).
-          - cityName: String (name of the city).
+     d. Request Body:\
+          - eventName: String (name of the event).\
+          - cityName: String (name of the city).\
           - date: Date (date of the event).\
           - time: Time (time of the event).\
           - latitude: Float (latitude coordinate of the event location).\
