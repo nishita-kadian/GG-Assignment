@@ -11,6 +11,7 @@ from uuid import uuid4
 from math import radians, sin, cos, sqrt, asin
 import math
 from datetime import date, time
+import os
 
 
 
@@ -20,7 +21,7 @@ connection_string = "mysql+mysqlconnector://root:password@mysql-local:3306/gyang
 engine = create_engine(connection_string, echo=True)
 
 weatherAPIUrl = "https://gg-backend-assignment.azurewebsites.net/api/Weather"
-weatherAPIKey = "KfQnTWHJbg1giyB_Q9Ih3Xu3L9QOBDTuU5zwqVikZepCAzFut3rqsg=="
+weatherAPIKey = os.environ['weatherAPIKey']
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
