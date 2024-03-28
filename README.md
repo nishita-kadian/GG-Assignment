@@ -85,7 +85,7 @@ The project is broken down into 3 major components:
      ```
      a. Method: POST
      b. Endpoint: /show_events
-     c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date, with pagination.
+     c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date and time, with pagination.
      d. Request Parameters:
           - latitude: Float (latitude coordinate of the user's location).
           - longitude: Float (longitude coordinate of the user's location).
@@ -184,7 +184,7 @@ The project is broken down into 3 major components:
      ```
      a. Method: POST
      b. URL: /show_events_page_by_db
-     c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date, with pagination using direct database query.
+     c. Description: Retrieves events occurring within the next 14 days from the specified date, sorted by date and time, with pagination using direct database query.
      d. Request Body: Same as show_events.
      e. Response: Same as show_events.
      ```

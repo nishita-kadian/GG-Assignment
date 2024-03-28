@@ -209,7 +209,7 @@ def show_events(latitude: float, longitude: float, startDate: date, page: int):
                 'startdate': startDate
             }
             eventList = []
-            statement = text(f"""SELECT * FROM event WHERE date BETWEEN :startdate AND DATE_ADD(:startdate, INTERVAL 14 DAY) ORDER BY date""")
+            statement = text(f"""SELECT * FROM event WHERE date BETWEEN :startdate AND DATE_ADD(:startdate, INTERVAL 14 DAY) ORDER BY date, time""")
             eventData = connection.execute(statement, parameters=args)
             for event in eventData:
                 eventLatitude =  event.latitude
@@ -282,7 +282,7 @@ def show_events_page_by_db(latitude: float, longitude: float, startDate: date, p
 
             totalPages = math.ceil(totalEvents/10)
             args['offset'] = offset
-            statement = text("""SELECT * FROM event WHERE date BETWEEN :startdate AND DATE_ADD(:startdate, INTERVAL 14 DAY) ORDER BY date LIMIT 10 OFFSET :offset""")
+            statement = text("""SELECT * FROM event WHERE date BETWEEN :startdate AND DATE_ADD(:startdate, INTERVAL 14 DAY) ORDER BY date, time LIMIT 10 OFFSET :offset""")
             eventData = connection.execute(statement, parameters=args)
             for event in eventData:
                 eventLatitude =  event.latitude
