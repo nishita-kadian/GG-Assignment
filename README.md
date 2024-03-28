@@ -5,6 +5,11 @@ This application provides endpoints for managing events and retrieving events ba
   - FastAPI
   - SQLAlchemy
   - MySQL
+
+# Design Decision
+
+  Adapter Design Pattern
+    - Used this design pattern to convert the model from pydantic model to SQLAlchemy model.
     
 # Setup Instructions
   1. Clone the repository.
