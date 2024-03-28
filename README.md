@@ -36,6 +36,7 @@ The project is broken down into 3 major components:
 # Endpoints
 
 You can test url endpoints at `http://ec2-3-109-1-60.ap-south-1.compute.amazonaws.com/docs#/`
+<span style="color:red">Note: The provided csv dataset has already been uploaded. Please refrain from uploading the same file again. You can test the upload event with another file if you want.</span>.
 
 > Processing or other types of error will return HTTP status code 500.
 
@@ -199,3 +200,8 @@ You can test url endpoints at `http://ec2-3-109-1-60.ap-south-1.compute.amazonaw
   1. Dockerize the application
   2. Build and run the docker image
   3. Host this image on EC2, pull code from github using deploy keys, install docker/git on ec2, edit inbound rules to access port 80.
+
+# Scope for improvements
+  1. Put some logic for rechecking the data before insertion. The data should be upserted and not inserted always.
+  2. Use callback url to decouple processing and uploading file functions.
+  3. Refactor the `main.py` so that the routes are in a seperate folder/file.
