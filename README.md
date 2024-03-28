@@ -26,11 +26,11 @@ The project was broken down into 3 major components:
 # Endpoints
 
 1. Upload Event Data\
-     a. Method: POST
-     b. URL: '/upload'
-     c. Description: Uploads a CSV file containing event data.
-     d. Request Body: Form data with a single file upload parameter named file.
-     e. Response: JSON message indicating success or failure.
+     a. Method: POST\
+     b. URL: '/upload'\
+     c. Description: Uploads a CSV file containing event data.\
+     d. Request Body: Form data with a single file upload parameter named file.\
+     e. Response: JSON message indicating success or failure.\
 
 2. Add Event
      a. Method: POST
