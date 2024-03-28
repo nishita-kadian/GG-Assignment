@@ -25,6 +25,9 @@ weatherAPIKey = os.environ['weatherAPIKey']
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
+    """
+        Upload CSV file with dataset to allow bulk add data processing
+    """
     try:
         contents = await file.read()
         with open(file.filename, 'wb') as f:
@@ -97,6 +100,9 @@ def getDistance(lat1, lon1, lat2, lon2):
 
 @app.post('/add')
 def addEvent(eventName:str, cityName: str, date: date, time: time, latitude: float, longitude: float):
+    """
+
+    """
     try:
         pydanticEvent = EventModel(
             eventId=uuid4(),
